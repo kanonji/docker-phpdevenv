@@ -40,6 +40,13 @@ services:
       environment:
         WEBROOT_DIR: ${WEBROOT_DIR}
       command: /bin/sh -c "envsubst '$$WEBROOT_DIR' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    smtp:
+      build: ./smtp
+      restart: unless-stopped
+      networks:
+        - back
+      ports:
+        - "${MAILCATCHER_HTTP_PORT}:80"
 
 networks:
   front:

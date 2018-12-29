@@ -16,7 +16,7 @@ services:
       volumes:
         - ./db/init:/docker-entrypoint-initdb.d
         - ./db/data:/var/lib/mysql
-      command: --disable-partition-engine-check
+      command: --disable-partition-engine-check --innodb_use_native_aio=0
     php:
       build: ./php
       restart: unless-stopped

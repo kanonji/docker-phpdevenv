@@ -38,7 +38,7 @@ services:
       volumes:
         - ./web/default.conf.template:/etc/nginx/conf.d/default.conf.template:ro
         - ./web/nginx.conf:/etc/nginx/nginx.conf:ro
-        - ${PHP_PROJECT_DIR}:/var/www/html:ro
+        - ${PHP_PROJECT_DIR}/${WEBROOT_DIR}:/var/www/html/${WEBROOT_DIR}:ro
       working_dir: /var/www/html
       environment:
         WEBROOT_DIR: ${WEBROOT_DIR}
